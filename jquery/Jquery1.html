@@ -1,0 +1,137 @@
+Sample Html with elements
+  Draw a Solid Red border on the selected elements e.g. $("selector").css("border", "3px solid red");
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <title>Document</title>
+  <!-- Add JQuery here -->
+  <script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" >
+            // Example
+          // Use basic selectors, basic filters, attribute selectors, content filters, hierarchy filters
+		  $(document).ready(function(){
+            $("#button1").toggle(function(){
+              $("*").css("border", "2px solid blue");
+               }, function(){
+              $("*").css("border", "");
+               });
+			   
+			   $("#button2").toggle(function(){
+              $("p").css("border", "2px solid red");
+               }, function(){
+              $("p").css("border", "");
+               });
+			   
+			   $("#button3").toggle(function(){
+              $("#para2,#para4").css("border", "2px solid red");
+               }, function(){
+              $("#para2,#para4").css("border", "");
+               });
+			   
+			   $("#button4").toggle(function(){
+              $(".a,.b").css("border", "2px solid red");
+               }, function(){
+              $(".a,.b").css("border", "");
+               });
+			   
+			   $("#button5").toggle(function(){
+              $('input[value^="Select"]').css("border", "2px solid green");
+               }, function(){
+              $('input[value^="Select"]').css("border", "");
+               });
+			  			   
+			  $("#button6").toggle(function(){
+             $("li:last").css({backgroundColor: 'yellow', fontWeight: 'bolder'});
+               }, function(){
+              $("li:last").css({backgroundColor: 'white', fontWeight: 'normal'});
+               });
+
+            $("#button7").toggle(function(){
+             $("li:first").css({backgroundColor: 'yellow', fontWeight: 'bolder'});
+               }, function(){
+              $("li:first").css({backgroundColor: 'white', fontWeight: 'normal'});
+               });	
+
+           
+            $("#button8").toggle(function(){
+             $("li:even").css("background-color", "#bbbbff");
+               }, function(){
+              $("li:even").css("background-color", "white");
+               });
+			   
+			$("#button9").toggle(function(){
+             $("li:odd").css("background-color", "#bbbbff");
+               }, function(){
+              $("li:odd").css("background-color", "white");
+               });	
+			   			   		   
+			 $("#button10").toggle(function(){
+             $("li:empty").css('background', 'rgb(255,220,200)');
+               }, function(){
+              $("li:empty").css("background", "white");
+               });
+			   
+			   
+			   
+			 $("#button11").toggle(function(){
+            $("p:contains('hello')").css("text-decoration", "underline");
+               }, function(){
+              $("p:contains('hello')").css("text-decoration", "");
+               });
+			  
+			$("#button12").click(function(){
+             $(":hidden").show().css("border", "3px double red");
+              });
+  		   		      
+			 $("#button13").toggle(function(){
+               $("ul.parent > li").css("border", "3px double red");
+               }, function(){
+              $("ul.parent > li").css("border", "");
+               }); 
+			   
+			   
+       });
+    </script>
+  <style type="text/css">
+  .a { color: Navy; }
+  .b { color: Maroon; }
+  .hidden { display:none;}
+  .parent {}
+  </style>
+  </head>
+  <body>
+      <ul id="list1" class="parent">
+          <li  name="button" class="a">item 1</li>
+          <li class="a">item 2</li>
+		  <li></li>
+		  <li name="button" class="b">item 3</li>
+		  <li>Item 2 
+          <ul><li>Nested item 1</li><li>Nested item 2</li><li>Nested item 3</li></ul>
+          </li>
+		  <li></li>
+         <li class="b">item 4</li>
+		  
+      </ul>
+	  
+      <p class="a">hello : This is paragraph 1 : Has class a</p>
+      <p id="para2">This is paragraph 2 : It has an ID</p>
+      <p class="b"> hello : This is a paragraph 3 : Has class B</p> 
+      <p id="para4">This is paragraph 4 : It has an ID</p>
+	   <p class="hidden">Was hidden</p>
+	  
+      <!-- Add multiple buttons for each selector -->
+      <input type="button" id="button1" name="button" value="Select All Elements in page" />
+	  <input type="button" id="button2" value="Select All of paragraph type" />
+	  <input type="button" id="button3" value="Select only the paragraph element with id" />
+	  <input type="button" id="button4" name="button" value="Select para and list elements with class" />
+	  <input type="button" id="button5" value="Select elements whose value starts with Select" />
+	  <input type="button" id="button6" value="Highlight last element of list" />
+	  <input type="button" id="button7" value="Highlight first element of list" />
+	  <input type="button" id="button8" value="Highlight even element of list" />
+	  <input type="button" id="button9" value="Highlight odd element of list" />
+	  <input type="button" id="button10" value="Select empty list elements" />
+	  <input type="button" id="button11" value="Underline paragraph empty element which has hello" />
+	  <input type="button" id="button12" value="Show hidden List elements" />
+	  <input type="button" id="button13" value="mark all children of outer list" />
+	  
+  </body>
+  </html>
