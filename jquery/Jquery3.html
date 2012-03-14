@@ -1,0 +1,50 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Events with jQuery</title>
+	  <script src='lib/jquery.js'></script>
+      <script type="text/javascript">
+		 $("document").ready(function() {
+			$('#evtTarget').bind('mouseenter mouseleave', function() {
+				$(this).toggleClass('highlighted');
+			});
+			
+			$('#evtTarget').click(function(){
+				$(this).unbind();
+			});
+			/* onclick tigger*/
+			$('#button').click(function(){
+				$('#evtTarget').trigger('click');
+			});
+			/* onclick of button delegated the div to behave as it would in a scenario of onclick*/
+			$("#parent").delegate("#button1", "click", function() {
+            $('#evtTarget').trigger('click');
+             });
+		    
+		  });
+      </script>
+      <style type='text/css'>
+          .normal {
+              width: 300px;
+              height: 200px;
+              background-color: Yellow;
+              font-size: 18pt;
+          }
+
+          .highlighted {
+              background-color: Red;
+          }
+		  
+      </style>
+  </head>
+  <body>
+  <div id="parent">
+  <h1>Binding Event Example</h1>
+  <div id="evtTarget" class="normal">Mouse over this div to see the effect. Click on it to unbind the mouseover.</div>
+  <input type="button" id="button" value="Trigger click on div"/>
+  <input type="button" id="button1" value="Delegate to trrigger on click on div."/>
+  </div>
+  </body>
+  </html>
