@@ -1,0 +1,189 @@
+ Sample Form Html -
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Using Form Selectors and Filters</title>
+      <!-- Add JQuery here -->
+	  <script type="text/javascript" src="lib/jquery.js"></script>
+      <script type="text/javascript">
+          $("document").ready(function() {
+              $('#button1').toggle(function() {
+                  $("form :input").css("border", "3px solid red");
+              }, function() {
+                  $("form :input").css("border", "");
+              });
+			  
+			 $('#button2').toggle(function() {
+                  $(":button").css("border", "3px solid red");
+              }, function() {
+                  $(":button").css("border", "");
+              });
+			  
+			$('#button3').toggle(function() {
+                  $("form input:text").css("border", "3px solid red");
+              }, function() {
+                  $("form input:text").css("border", "");
+              });
+			  
+			  $('#button4').toggle(function() {
+                  $("textarea").css("border", "3px solid red");
+              }, function() {
+                  $("textarea").css("border", "");
+              });
+			  
+			  $('#button5').toggle(function() {
+                  $("form input:checkbox").css("outline", "3px solid red");
+              }, function() {
+                  $("form input:checkbox").css("outline", "");
+              });
+			  
+			  $('#button6').toggle(function() {
+                  $(":checkbox:checked").css("outline", "3px solid red");
+              }, function() {
+                  $(":checkbox").css("outline", "");
+              });
+			  
+			  $('#button7').toggle(function() {
+                  $(":checkbox:not\(:checked\)").css("outline", "3px solid red");
+              }, function() {
+                  $(":checkbox").css("outline", "");
+              });
+			  
+			   $('#button8').toggle(function() {
+                  $("form input:radio").css("outline", "3px solid red");
+              }, function() {
+                  $("form input:radio").css("outline", "");
+              });
+			  
+			   $('#button9').toggle(function() {
+                  $("form input:disabled").css("border", "3px solid red");
+              }, function() {
+                  $("form input:disabled").css("border", "");
+              });
+			  
+			   $('#button10').toggle(function() {
+                  $("form :submit").css("border", "3px solid red");
+              }, function() {
+                  $("form :submit").css("border", "");
+              });
+			  
+			  $('#button11').toggle(function() {
+                  $("form input:reset").css("border", "3px solid red");
+              }, function() {
+                  $("form input:reset").css("border", "");
+              });
+			  
+			  $('#button12').toggle(function() {
+                  $("form input:file").css("border", "3px solid red");
+              }, function() {
+                  $("form input:file").css("border", "");
+              });
+			  
+          });
+      </script>
+      <style type="text/css">
+          .style1 {
+              width: 600px;
+          }
+
+          .style2 {
+              width: 200px;
+          }
+      </style>
+  </head>
+  <body>
+
+  <h1>
+      Example Form Document</h1>
+
+  <form action="" method="post">
+
+      <table class="style1">
+          <tbody>
+          <tr>
+              <td class="style2">
+                  First Name
+              </td>
+              <td>
+                  <input id="FirstName" type="text"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Last Name
+              </td>
+              <td>
+                  <input id="LastName" type="text"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Disabled Element
+              </td>
+              <td>
+                  <input id="Text1" type="text" disabled="disabled"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Gender
+              </td>
+              <td>
+                  <input id="Male" type="radio" checked="checked"/>M<input id="Female" type="radio"/>F
+              </td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  What products are you interested in?
+              </td>
+              <td>
+                  <input id="Checkbox1" type="checkbox" checked="checked"/><label for="Checkbox1">Widgets</label><br/>
+                  <input id="Checkbox2" type="checkbox"/><label for="Checkbox1">Hibbity Jibbities</label><br/>
+                  <input id="Checkbox3" type="checkbox" checked="checked"/><label
+                      for="Checkbox1">SplashBangers</label><br/>
+                  <input id="Checkbox4" type="checkbox"/><label for="Checkbox1">Whatzits</label></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Comments:
+              </td>
+              <td>
+                  <textarea id="Comments" cols="40" name="S1" rows="5"></textarea></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Optional life story file
+              </td>
+              <td>
+                  <input id="File1" type="file"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  &nbsp;</td>
+              <td>
+                  &nbsp;</td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  &nbsp;</td>
+              <td>
+                  <input id="Submit1" type="submit" value="submit"/>
+                  <input id="Reset1" type="reset" value="reset"/></td>
+          </tr>
+          </tbody>
+      </table>
+
+  </form>
+  <input type="button" id="button1" value="Select All Form input"/>
+   <input type="button" id="button2" value="Select only button type elements"/>
+    <input type="button" id="button3" value="Select input type text box"/>
+	 <input type="button" id="button4" value="Select element type Textarea"/>
+	 <input type="button" id="button5" value="Select all checkbox"/>
+	  <input type="button" id="button6" value="Select only checked checkbox"/>
+	   <input type="button" id="button7" value="Select only unchecked checkbox"/>
+	   <input type="button" id="button8" value="Select only radio button"/>
+	   <input type="button" id="button9" value="Select disabled element"/>
+	    <input type="button" id="button10" value="Select submit element"/>
+		 <input type="button" id="button11" value="Select reset element"/>
+		  <input type="button" id="button12" value="Select file type element"/>
+  </body>
+  </html>
