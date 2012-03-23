@@ -1,0 +1,59 @@
+odi=read.csv("C:/Users/amruta das/Desktop/ODI", sep=";", strip.white=TRUE) //Read a File
+
+
+
+Q ) Plot the Top ten grounds where mathches were played and Number of matches played There :
+
+ground=(aggregate(odi$Ground, list(odi$Ground),length)) // Fetch all the ground with the times match played in each ground
+
+sort_ground <- ground[order(-ground$x) , ] // This SORTS the dataframe in Desending order
+
+topTen<- sort_ground[1:10,] // Get the top ten Records Fron the DATA SET
+
+barplot(topTen$x,names.arg=topTen$Group.1,xlab="Countries",ylab="No of Games",col="green") // Finally Plot it as a bargraph
+
+
+
+
+Q) In India Pak match over the years-- How many Matches were played and how many were won by India
+
+Indpak<- odi[(odi$Team1=="India" & odi$Team2=="Pakistan") | (odi$Team2=="India" & odi$Team1=="Pakistan"),] // All Indo _pak matches
+
+totmatch=(aggregate(Indpak$Matchyear, list(Indpak$Matchyear),length)) //Matches per year
+
+Indwin<- odi[ (odi$Team1=="India" & odi$Team2=="Pakistan") & odi$Winner=="India" | (odi$Team2=="India" & odi$Team1=="Pakistan") & odi$Winner=="India",]// Matches won by India (from India Pak matches)
+
+Indmatch=(aggregate(Indwin$Matchyear, list(Indwin$Matchyear),length)) // aggregate total Wins of India by year
+
+finalList<- merge(totmatch,Indmatch,by="Group.1",all="True")  //merge the two : Now we have YEAR , TOTAL MATCH , HOW MANY INDIA WON
+
+par(las=2) // To get the x-axis along the line
+
+barplot(finalList$x.y,names.arg=finalList$Group.1,xlab="Total No of matches Played year by year ",ylab="No India Won",col="green",ylim=c(0,6))
+ //Graph plotted
+
+X-axis has the Number of matches played and y has the number INDIA WON.
+
+
+
+Q) Percentage Win for India in each Ground Country
+
+IndTot<- odi[(odi$Team1=="India") | (odi$Team2=="India"),] //Total Number of matches played by India
+
+IndTot<-(aggregate(IndTot$Ground, list(IndTot$Ground),length)) //Matches played in each Ground.
+
+Indwin<- odi[(odi$Winner=="India"),] // Matches won by India
+
+IndWin<-(aggregate(Indwin$Ground, list(Indwin$Ground),length)) // Matches India Won in each ground
+
+finalList<-merge(IndTot,IndWin,by="Group.1",all="True") // Now we have matches played per ground, and how many India won.
+
+percentage<- (finalList$x.y/finalList$x.x)*100 // Matches won by matches played calculation.
+
+final<- cbind(finalList,percentage) // Bind it to the data frame
+
+barplot(final$percentage,names.arg=final$Group.1,xlab="Grounds India Played in",ylab="Percentage India Won",col="green") // Plot Ground India played VS Won
+
+
+
+ 
