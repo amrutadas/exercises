@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="en"> 
+
+<head>
+   <meta charset="UTF-8">
+   <title>Todo Application</title>
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="stylesheet" type="text/css" href="todo.css" />
+   <script type="text/javascript" src="todo.js"></script>  
+ </head>
+ 
+ <body>     
+    <img id="right_corner" src="../images/download.jpg"  />
+	<!--- This is the banner or header. It consists of the logo--> 
+        <div id="header">
+        	<div class="logo"></div>
+            <h1>To - do's</h1>		
+            <h2>What's to be done today?</h2>			
+        </div>
+   <!--- This is the banner or header END. It consists of the logo and the Motto line--> 
+<!--- This is the Start of the second part. It has a parent div with search and to do list--> 
+	<div class="contentMain"> 
+     	 <div class= "todoList">
+	      <h4> Add to your List : ( <span id="countDisplay">0</span> )</h4>
+	      <br/>
+	      <input type="text" id="listElement" size="50" maxlength="255" name="nameOfItem">
+          <input type="button" value="Add Todo" size="35" maxlength="255" onclick="textField_Validator()">
+          <br/>
+	      <br/>
+          <ul id="list">
+          </ul>
+	    </div>
+	    <div class="search">
+	     <h4>Click to search</h4>
+	     <br/>
+	     <form method="get" target="_blank" action="http://www.google.com/search">
+			<input type="text" name="q" size="35" maxlength="255" value="" />
+			<input type="submit" value="Search" />
+	     </form>
+	
+        </div>
+	 
+	 </div>
+ 		
+<!--- This is the END of parent div with search and to do list-->              
+ </body>
+
+</html>
+

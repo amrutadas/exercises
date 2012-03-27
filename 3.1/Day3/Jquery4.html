@@ -1,0 +1,162 @@
+Sample Form Html <br />
+Navigate out of first name text box to fire "blur" event. <br />
+Select any Input type element to fire the "select" event <br />
+Change value of any checkbox to fire "change" event. <br />
+On click of a marked div "click" event is called  <br />
+Hover over any DIV element to call the hover event handler and see the message. <br />
+Focus on any INPUT element to get the alert which comes on invocation of focus handler.<br />
+Click on the last Div to call submit handler.It is called onclick of the specific DIV.
+
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+  <html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <title>Using Form Selectors and Filters</title>
+      <script src='lib/jquery.js'></script>
+      <script type="text/javascript">
+          $("document").ready(function() {
+              $('#FirstName').blur(function() {
+                alert('This element looses focus so .blur() event is called');
+                  });
+			   
+		     $(":input").select( function () { 
+             $("div").text("Something was selected so select event was fired: Which makes this text appear").css("color","red").show().fadeOut(7000); 
+                });
+				
+		     $(':checkbox').change(function() {
+               alert('Some checkbox value was changed so : Handler for .change() event was called.');
+               });
+			   
+			   $("#click").click(function() {
+                alert("When u click on the div , Handler for .click() is called.");
+                 });
+				 
+			   $("div").hover(function () {
+                 $(this).append($("<span>** You are Hovering over an DIV element **</span>"));
+                  },
+				    function () {
+                    $(this).find("span:last").remove();
+                   });
+
+				
+			   $(':input').focus(function() {
+                 alert('Handler for .focus() called when focus is shifted to input elements in form.');
+                 });
+				 
+				 $('#submitDiv').click(function() {
+                  $('#form').submit();
+				  alert('As you clicked on the div which explicitly submits the form : The form is submitted').fadeOut(7000); 
+                  });
+			   
+			   });   
+      </script>
+      <style type="text/css">
+          .style1 {
+              width: 600px;
+          }
+
+          .style2 {
+              width: 200px;
+          }
+		  
+		  .click{
+		      color:blue;
+			  border: 3px;
+			  border-style:solid;
+              border-color:#ff0000;
+			  }
+			  
+		  .submit{
+		      color:green;
+			  border: 3px;
+			  border-style:solid;
+              border-color:blue;
+			  }
+      </style>
+  </head>
+  <body>
+
+  <h1>
+      Example Form Document</h1>
+	  <div></div>
+
+  <form action="" method="post" id="form" target="_blank">
+
+      <table class="style1">
+          <tbody>
+          <tr>
+              <td class="style2">
+                  First Name
+              </td>
+              <td>
+                  <input id="FirstName" type="text"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Last Name
+              </td>
+              <td>
+                  <input id="LastName" type="text"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Disabled Element
+              </td>
+              <td>
+                  <input id="Text1" type="text" disabled="disabled"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Gender
+              </td>
+              <td>
+                  <input id="Male" type="radio" checked="checked"/>M<input id="Female" type="radio"/>F
+              </td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  What products are you interested in?
+              </td>
+              <td>
+                  <input id="Checkbox1" type="checkbox" checked="checked"/><label for="Checkbox1">Widgets</label><br/>
+                  <input id="Checkbox2" type="checkbox"/><label for="Checkbox1">Hibbity Jibbities</label><br/>
+                  <input id="Checkbox3" type="checkbox" checked="checked"/><label
+                      for="Checkbox1">SplashBangers</label><br/>
+                  <input id="Checkbox4" type="checkbox"/><label for="Checkbox1">Whatzits</label></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Comments:
+              </td>
+              <td>
+                  <textarea id="Comments" cols="40" name="S1" rows="5">This is original text</textarea></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  Optional life story file
+              </td>
+              <td>
+                  <input id="File1" type="file"/></td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  &nbsp;</td>
+              <td>
+                  &nbsp;</td>
+          </tr>
+          <tr>
+              <td class="style2">
+                  &nbsp;</td>
+              <td>
+                  <input id="Submit1" type="submit" value="submit"/>
+                  <input id="Reset1" type="reset" value="reset"/></td>
+          </tr>
+          </tbody>
+      </table>
+
+  </form>
+  <div id="click" class="click">Click On THIS Div to fire Click Event handler</div> <br />
+  <div id="submitDiv" class="submit">Click On THIS Div to submit the form</div>
+   </body>
+  </html>
