@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+    <meta name="generator" content=
+    "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org">
+    <script src="http://code.jquery.com/jquery-latest.js" type=
+    "text/javascript">
+</script>
+    <script type="text/javascript" src=
+    "http://jzaefferer.github.com/jquery-validation/jquery.validate.js">
+</script>
+    <style type="text/css">
+* { font-family: Verdana; font-size: 96%; }
+    label { width: 10em; float: left; }
+    label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
+    p { clear: both; }
+    .submit { margin-left: 12em; }
+    em { font-weight: bold; padding-right: 1em; vertical-align: top; }
+    </style>
+    <script type="text/javascript">
+$(document).ready(function(){
+   
+
+    $("#Form").validate({
+                        rules: {
+                                fname: "required",
+                                email: {
+                                        required: true,
+                                        
+                                },
+								lname: "required",
+                                email: {
+                                        required: true,
+                                },
+								uname: "required",
+                                email: {
+                                        required: true,
+                                        cemail: true
+                                },
+                                password: {
+                                        required: true,
+                                        minlength: 5
+                                },
+                                confirm_password: {
+                                        required: true,
+                                        minlength: $('#password').val().length,
+                                        equalTo: "#password"
+                                }
+                                                                
+                        },
+                        messages: {
+                                fname: "Enter your First Name",
+								lname: "Enter your Last Name",
+								uname: "Enter your User Name",
+                                cemail: "Enter a valid email address",
+                                password: {
+                                        required: "Enter a password",
+                                        minlength: "Password must be at least 5 characters long"
+                                },
+                                confirm_password: {
+                                        required: "Please re-enter the password",
+                                        minlength: "Password must be at least 5 characters long",
+                                        equalTo: "Please enter the same password as above"
+                                }
+
+                        }
+        });
+    });
+    </script>
+    <title>Validation of text field</title>
+  </head>
+  <body>
+    <form id="Form" method="get" action="" name="Form">
+      <fieldset>
+        <legend>A simple comment form with submit validation and default
+        messages</legend>
+        <p>
+          <label for="fname">First Name</label> <em>*</em><input id="fname" name=
+          "fname" size="25" minlength="2">
+        </p>
+		<p>
+          <label for="lname">Last Name</label> <em>*</em><input id="lname" name=
+          "lname" size="25" minlength="2">
+        </p>
+		<p>
+          <label for="uname">User Name</label> <em>*</em><input id="uname" name=
+          "uname" size="25" minlength="2">
+        </p>
+        <p>
+          <label for="password">Password</label> <input id="password" name=
+          "password" type="password">
+        </p>
+        <p>
+          <label for="confirm_password">Confirm Password</label> <input id=
+          "confirm_password" name="confirm_password" type="password">
+        </p>
+		 <p>
+          <label for="cemail">E-Mail</label> <em>*</em><input id="cemail" name=
+          "cemail" size="25" class="required email">
+        </p>
+        <p>
+          <input class="submit" type="submit" value="Submit">
+        </p>
+      </fieldset>
+    </form>
+  </body>
+</html>
