@@ -1,0 +1,32 @@
+<!-- From The given url get the Json. It has many objects. Go to the text field of each object and display the text. -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Get Tweet File And Append to a List</title>
+    <script src='./jquery.js'></script>
+      <script type="text/javascript">
+	  //<![CDATA[
+	  $("document").ready(function() {
+			$('#getTweet').click(function(){
+				$.ajax({
+					type:'GET',
+					url:"http://twitter.com/status/user_timeline/jquery.json",
+					success:function(feed) {
+						 for(var i=0, l=feed.length; i < l && i < 3;   i++)  
+						{
+							$("ul#tweetList").append("<li>"+feed[i].text+"<\/li>");
+							
+						}
+					},
+					dataType:'jsonp'
+				});
+			});
+		}); 
+		//]]>
+	  </script>
+  </head>
+  <body>
+	<input type='button' id='getTweet' value='Get Tweets' />
+	<ul id="tweetList">
+	</ul>
+  </body>
+  </html>
